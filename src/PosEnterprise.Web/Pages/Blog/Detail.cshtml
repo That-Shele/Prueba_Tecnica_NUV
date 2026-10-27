@@ -1,0 +1,38 @@
+﻿@page "{slug?}"
+@model PosEnterprise.Web.Pages.Blog.DetailModel
+@{
+    ViewData["Title"] = string.IsNullOrEmpty(Model.Article.MetaTitle) ? Model.Article.Title : Model.Article.MetaTitle;
+    ViewData["MetaDescription"] = string.IsNullOrEmpty(Model.Article.MetaDescription) ? Model.Article.Summary : Model.Article.MetaDescription;
+}
+
+<article style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
+    <header style="margin-bottom: 2rem;">
+        <h1>@Model.Article.Title</h1>
+        <p style="color: #6c757d; font-size: 0.95rem; margin-top: 0.5rem;">
+            Publicado el @Model.Article.PublishedAt.ToString("dd 'de' MMMM, yyyy") por <strong>@Model.Article.Author</strong>
+        </p>
+    </header>
+
+    <div style="font-size: 1.1rem; line-height: 1.8;">
+        @Html.Raw(Model.Article.Content)
+    </div>
+
+    <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #dee2e6;">
+        <a asp-page="/Blog/Index" style="text-decoration: none; color: #0d6efd; font-weight: bold;">&larr; Volver a todos los artículos</a>
+    </footer>
+</article>
+
+<!-- Datos estructurados Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "BlogPosting",
+  "headline": "@Model.Article.Title",
+  "description": "@Model.Article.Summary",
+  "author": {
+    "@@type": "Organization",
+    "name": "@Model.Article.Author"
+  },
+  "datePublished": "@Model.Article.PublishedAt.ToString("yyyy-MM-ddTHH:mm:ssZ")"
+}
+</script>

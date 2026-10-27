@@ -1,0 +1,26 @@
+﻿@page
+@model PosEnterprise.Web.Pages.Blog.IndexModel
+@{
+    ViewData["Title"] = "Blog de Tecnología y Gestión POS - POS Enterprise";
+    ViewData["MetaDescription"] = "Artículos, guías y buenas prácticas sobre control de inventarios, comanda digital y administración para restaurantes y tiendas.";
+}
+
+<section class="hero">
+    <h1>Blog & Recurso de Gestión para Comercios</h1>
+    <p>Aprende a optimizar la operativa de tu restaurante o tienda con nuestras guías y artículos especializados.</p>
+</section>
+
+<div class="features-grid">
+    @foreach (var article in Model.Articles)
+    {
+        <article class="card">
+            <h2>@article.Title</h2>
+            <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 0.5rem;">
+                Por <strong>@article.Author</strong> | @article.PublishedAt.ToString("dd 'de' MMMM, yyyy")
+            </p>
+            <p>@article.Summary</p>
+            <br />
+            <a asp-page="/Blog/Detail" asp-route-slug="@article.Slug" class="btn-cta-nav">Leer Artículo Completo</a>
+        </article>
+    }
+</div>

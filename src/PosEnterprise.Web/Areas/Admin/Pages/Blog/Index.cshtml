@@ -1,0 +1,55 @@
+﻿@page
+@model PosEnterprise.Web.Areas.Admin.Pages.Blog.IndexModel
+@{
+    ViewData["Title"] = "Gestión del Blog - Administración";
+}
+
+<div style="max-width: 1000px; margin: 2rem auto; padding: 0 1rem;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h1>Gestión de Artículos del Blog</h1>
+        <a asp-page="/Blog/Create" class="btn-cta-nav">+ Crear Nuevo Artículo</a>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div style="background-color: #d1e7dd; color: #0f5132; padding: 0.75rem; border-radius: 4px; margin-bottom: 1rem;">
+            @Model.Message
+        </div>
+    }
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+        <thead>
+            <tr style="background-color: #f8f9fa; text-align: left; border-bottom: 2px solid #dee2e6;">
+                <th style="padding: 0.75rem;">Título</th>
+                <th style="padding: 0.75rem;">Autor</th>
+                <th style="padding: 0.75rem;">Fecha</th>
+                <th style="padding: 0.75rem;">Estado</th>
+                <th style="padding: 0.75rem;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var article in Model.Articles)
+            {
+                <tr style="border-bottom: 1px solid #dee2e6;">
+                    <td style="padding: 0.75rem;"><strong>@article.Title</strong></td>
+                    <td style="padding: 0.75rem;">@article.Author</td>
+                    <td style="padding: 0.75rem;">@article.PublishedAt.ToString("yyyy-MM-dd")</td>
+                    <td style="padding: 0.75rem;">
+                        @if (article.IsPublished)
+                        {
+                            <span style="color: green; font-weight: bold;">Publicado</span>
+                        }
+                        else
+                        {
+                            <span style="color: gray; font-weight: bold;">Borrador</span>
+                        }
+                    </td>
+                    <td style="padding: 0.75rem; display: flex; gap: 0.5rem;">
+                        <a asp-page="/Blog/Edit" asp-route-id="@article.Id" style="color: #0d6efd; text-decoration: none;">Editar</a> |
+                        <a asp-page="/Blog/Delete" asp-route-id="@article.Id" style="color: red; text-decoration: none;">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

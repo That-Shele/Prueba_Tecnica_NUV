@@ -14,8 +14,4 @@
 		<ProjectReference Include="..\PosEnterprise.Core\PosEnterprise.Core.csproj" />
 		<ProjectReference Include="..\PosEnterprise.Infrastructure\PosEnterprise.Infrastructure.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Areas\Admin\Pages\Blog\" />
-	  <Folder Include="Pages\Blog\" />
-	</ItemGroup>
 </Project>

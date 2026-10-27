@@ -1,0 +1,63 @@
+﻿@page "{id:int}"
+@model PosEnterprise.Web.Areas.Admin.Pages.Blog.EditModel
+@{
+    ViewData["Title"] = "Editar Artículo del Blog - Administración";
+}
+
+<div style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
+    <h1>Editar Artículo</h1>
+    <p style="color: #6c757d;">Modifica el contenido, la visibilidad pública o los parámetros SEO del artículo.</p>
+    <br />
+
+    <form method="post">
+        <input type="hidden" asp-for="Input.Id" />
+
+        <div style="margin-bottom: 1rem;">
+            <label for="Title" style="display:block; font-weight:bold;">Título (*)</label>
+            <input asp-for="Input.Title" id="Title" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;" />
+            <span asp-validation-for="Input.Title" style="color:red; font-size:0.85rem;"></span>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label for="Slug" style="display:block; font-weight:bold;">Slug URL (ej. mi-articulo-pos) (*)</label>
+            <input asp-for="Input.Slug" id="Slug" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;" />
+            <span asp-validation-for="Input.Slug" style="color:red; font-size:0.85rem;"></span>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label for="Summary" style="display:block; font-weight:bold;">Resumen / Extracto (*)</label>
+            <textarea asp-for="Input.Summary" id="Summary" rows="3" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;"></textarea>
+            <span asp-validation-for="Input.Summary" style="color:red; font-size:0.85rem;"></span>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label for="Content" style="display:block; font-weight:bold;">Contenido HTML (*)</label>
+            <textarea asp-for="Input.Content" id="Content" rows="12" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;"></textarea>
+            <span asp-validation-for="Input.Content" style="color:red; font-size:0.85rem;"></span>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label for="Author" style="display:block; font-weight:bold;">Autor (*)</label>
+            <input asp-for="Input.Author" id="Author" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;" />
+            <span asp-validation-for="Input.Author" style="color:red; font-size:0.85rem;"></span>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label for="MetaTitle" style="display:block; font-weight:bold;">SEO Meta Title</label>
+            <input asp-for="Input.MetaTitle" id="MetaTitle" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;" />
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label for="MetaDescription" style="display:block; font-weight:bold;">SEO Meta Description</label>
+            <textarea asp-for="Input.MetaDescription" id="MetaDescription" rows="2" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;"></textarea>
+        </div>
+
+        <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <input asp-for="Input.IsPublished" id="IsPublished" type="checkbox" />
+            <label for="IsPublished" style="font-weight:bold;">Artículo visible para el público</label>
+        </div>
+
+        <button type="submit" class="btn-cta-nav" style="border:none; padding: 0.75rem 1.5rem; cursor:pointer;">Actualizar Artículo</button>
+        <a asp-page="/Blog/Index" style="margin-left: 1rem; color: #6c757d; text-decoration:none;">Cancelar</a>
+    </form>
+</div>

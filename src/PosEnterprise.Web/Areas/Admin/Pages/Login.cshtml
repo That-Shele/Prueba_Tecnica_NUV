@@ -1,0 +1,33 @@
+﻿@page
+@model PosEnterprise.Web.Areas.Admin.Pages.LoginModel
+@{
+    ViewData["Title"] = "Acceso Administrativo - POS Enterprise";
+}
+
+<div style="max-width: 400px; margin: 4rem auto; padding: 2rem; border: 1px solid #dee2e6; border-radius: 8px;">
+    <h2>Iniciar Sesión Administrador</h2>
+    <br />
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div style="background-color: #f8d7da; color: #842029; padding: 0.75rem; border-radius: 4px; margin-bottom: 1rem;">
+            @Model.ErrorMessage
+        </div>
+    }
+
+    <form method="post">
+        <div style="margin-bottom: 1rem;">
+            <label for="Username" style="display:block; font-weight:bold;">Usuario</label>
+            <input asp-for="Input.Username" id="Username" style="width:100%; padding:0.5rem; margin-top:0.25rem;" />
+            <span asp-validation-for="Input.Username" style="color:red; font-size:0.85rem;"></span>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label for="Password" style="display:block; font-weight:bold;">Contraseña</label>
+            <input asp-for="Input.Password" id="Password" style="width:100%; padding:0.5rem; margin-top:0.25rem;" />
+            <span asp-validation-for="Input.Password" style="color:red; font-size:0.85rem;"></span>
+        </div>
+
+        <button type="submit" class="btn-cta-nav" style="width:100%; border:none; padding:0.75rem; cursor:pointer;">Ingresar</button>
+    </form>
+</div>
