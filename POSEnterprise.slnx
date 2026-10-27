@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PosEnterprise.Core/PosEnterprise.Core.csproj" />
+    <Project Path="src/PosEnterprise.Infrastructure/PosEnterprise.Infrastructure.csproj" />
+    <Project Path="src/PosEnterprise.Web/PosEnterprise.Web.csproj" />
+  </Folder>
+</Solution>

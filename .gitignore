@@ -1,0 +1,16 @@
+## Visual Studio y carpetas de entorno/caché
+.vs/
+*.user
+*.userossc
+*.sln.docstates
+*.suo
+
+## Artefactos de compilación de C# y .NET Core
+bin/
+obj/
+[Debug]/
+[Release]/
+
+## Archivos de configuración con secretos locales
+appsettings.Development.json
+appsettings.Local.json
