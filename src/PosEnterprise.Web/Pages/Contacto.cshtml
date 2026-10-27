@@ -1,0 +1,59 @@
+﻿@page
+@model ContactoModel
+@{
+    ViewData["Title"] = "Contacto y Solicitud de Demo - POS Enterprise";
+    ViewData["MetaDescription"] = "Solicita una demostración sin compromiso del sistema POS Enterprise para tu restaurante o tienda.";
+}
+
+<section class="hero">
+    <h1>Solicita una Demostración Gratis</h1>
+    <p>Déjanos tus datos y te mostraremos cómo nuestra plataforma impulsa tus ventas.</p>
+</section>
+
+<div style="max-width: 600px; margin: 2rem auto; padding: 0 1rem;">
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div style="background-color: #d1e7dd; color: #0f5132; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
+            @Model.SuccessMessage
+        </div>
+    }
+
+    <form method="post" aria-label="Formulario de Solicitud de Información">
+        <div style="margin-bottom: 1rem;">
+            <label for="FullName" style="display:block; font-weight:bold;">Nombre Completo (*)</label>
+            <input asp-for="Input.FullName" id="FullName" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;" />
+            <span asp-validation-for="Input.FullName" style="color:red; font-size:0.875rem;"></span>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label for="Email" style="display:block; font-weight:bold;">Correo Electrónico (*)</label>
+            <input asp-for="Input.Email" id="Email" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;" />
+            <span asp-validation-for="Input.Email" style="color:red; font-size:0.875rem;"></span>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label for="Phone" style="display:block; font-weight:bold;">Teléfono</label>
+            <input asp-for="Input.Phone" id="Phone" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;" />
+            <span asp-validation-for="Input.Phone" style="color:red; font-size:0.875rem;"></span>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label for="BusinessType" style="display:block; font-weight:bold;">Tipo de Negocio (*)</label>
+            <select asp-for="Input.BusinessType" id="BusinessType" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;">
+                <option value="">-- Seleccionar --</option>
+                <option value="Restaurante">Restaurante / Cafetería / Bar</option>
+                <option value="Retail">Tienda / Comercio / Minimarket</option>
+                <option value="Otro">Otro</option>
+            </select>
+            <span asp-validation-for="Input.BusinessType" style="color:red; font-size:0.875rem;"></span>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label for="Message" style="display:block; font-weight:bold;">Mensaje o Consulta (*)</label>
+            <textarea asp-for="Input.Message" id="Message" rows="5" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;"></textarea>
+            <span asp-validation-for="Input.Message" style="color:red; font-size:0.875rem;"></span>
+        </div>
+
+        <button type="submit" class="btn-cta-nav" style="border:none; cursor:pointer; width:100%; padding:0.75rem;">Enviar Solicitud</button>
+    </form>
+</div>

@@ -1,9 +1,27 @@
 ﻿@page
+@model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "POS Enterprise - Sistemas Punto de Venta para Restaurantes y Tiendas";
+    ViewData["MetaDescription"] = "Optimiza la facturación, inventarios y comandas de tu negocio con nuestro software POS ágil, confiable y con persistencia en la nube.";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero">
+    <h1>Soluciones Punto de Venta Diseñadas para Crecer</h1>
+    <p>Agiliza el cobro, controla tu stock en tiempo real y gestiona tus pedidos desde una plataforma unificada y fácil de usar.</p>
+    <a asp-page="/Contacto" class="btn-cta-nav" style="font-size: 1.1rem; padding: 0.75rem 1.5rem;">Solicitar una Demostración</a>
+</section>
+
+<section class="features-grid">
+    <article class="card">
+        <h2>Control de Stock en Tiempo Real</h2>
+        <p>Mantén la trazabilidad exacta de tus insumos o productos en mostrador, generando alertas automáticas de reabastecimiento.</p>
+    </article>
+    <article class="card">
+        <h2>Comandas Digitales para Gastronomía</h2>
+        <p>Envía pedidos desde la mesa directamente a la cocina o barra, eliminando tiempos muertos y errores de comanda.</p>
+    </article>
+    <article class="card">
+        <h2>Reportes e Inteligencia de Negocio</h2>
+        <p>Visualiza el volumen de ventas por turno, productos más vendidos y rendimiento financiero desde cualquier dispositivo.</p>
+    </article>
+</section>

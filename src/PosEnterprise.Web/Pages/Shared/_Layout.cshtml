@@ -1,52 +1,50 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PosEnterprise.Web</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@(ViewData["Title"] ?? "POS Enterprise - Sistemas de Punto de Venta")</title>
+    <meta name="description" content="@(ViewData["MetaDescription"] ?? "Sistemas POS integrados para restaurantes y comercios. Optimiza inventarios, ventas y comandas.")" />
+    <link asp-canonical="true" />
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/PosEnterprise.Web.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">PosEnterprise.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <header class="site-header">
+        <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+        <nav class="nav-container" aria-label="Navegación principal">
+            <a class="brand-logo" asp-page="/Index">
+                <strong>POS Enterprise</strong>
+            </a>
+            <ul class="nav-menu">
+                <li><a asp-page="/Index">Inicio</a></li>
+                <li><a asp-page="/Soluciones">Soluciones POS</a></li>
+                <li><a asp-page="/Blog/Index">Blog</a></li>
+                <li><a asp-page="/Contacto" class="btn-cta-nav">Solicitar Demo</a></li>
+            </ul>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - PosEnterprise.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <main id="main-content" tabIndex="-1">
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div>
+                <p><strong>POS Enterprise</strong> &copy; @DateTime.Now.Year. Soluciones tecnológicas para comercios y gastronomía.</p>
+            </div>
+            <ul class="footer-links">
+                <li><a asp-page="/Soluciones">Restaurantes y Retail</a></li>
+                <li><a asp-page="/Contacto">Contacto</a></li>
+                <li><a asp-page="/Admin/Login">Administración</a></li>
+            </ul>
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await Html.PartialAsync("_SchemaOrgPartial")
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
