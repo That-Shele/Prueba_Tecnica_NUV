@@ -4,31 +4,189 @@
     ViewData["MetaDescription"] = "Descubre nuestras soluciones especializadas para la industria gastronómica y el sector retail de comercio al por menor.";
 }
 
-<section class="hero">
-    <h1>Soluciones Especializadas por Sector</h1>
-    <p>Adapatamos nuestras funcionalidades a la operativa específica de tu establecimiento.</p>
-</section>
+<!-- Top Ambient Glow -->
+<div class="relative w-full overflow-hidden bg-surface py-space-xl">
+    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[720px] h-[340px] bg-primary-container/5 rounded-full blur-3xl pointer-events-none"></div>
 
-<div class="features-grid">
-    <section class="card">
-        <h2>POS para Restaurantes y Bares</h2>
-        <ul>
-            <li>Mapa dinámico de mesas y gestión de cuentas divididas.</li>
-            <li>Conexión con impresoras de cocina y pantallas KDS.</li>
-            <li>Manejo de recetas, subrecetas y descuente de insumos.</li>
-        </ul>
-        <br />
-        <a asp-page="/Contacto" class="btn-cta-nav">Cotizar para Restaurante</a>
+    <!-- Section 1: Hero Header & Mode Switcher -->
+    <section class="max-w-7xl mx-auto px-margin pt-space-xl pb-space-lg w-full flex flex-col items-center text-center relative z-10">
+        <div class="inline-flex items-center gap-space-xs px-3.5 py-1.5 rounded-full bg-surface-container-low shadow-sm">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span>
+            </span>
+            <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Arquitectura Adaptativa por Vertical</span>
+        </div>
+        <h1 class="mt-space-md font-display-lg text-display-lg text-on-surface tracking-tight max-w-4xl font-bold">
+            Soluciones Especializadas por Sector
+        </h1>
+        <p class="mt-space-sm font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+            Sincronización milimétrica entre hardware de grado automotriz y firmware dedicado. Optimizada exclusivamente para la física operativa de cada industria.
+        </p>
     </section>
 
-    <section class="card">
-        <h2>POS para Tiendas y Comercio Retail</h2>
-        <ul>
-            <li>Escaneo rápido con código de barras y variantes de producto.</li>
-            <li>Cierre de caja ciego y auditoría de cajeros.</li>
-            <li>Emisión de facturación electrónica e impresiones térmicas.</li>
-        </ul>
-        <br />
-        <a asp-page="/Contacto" class="btn-cta-nav">Cotizar para Retail</a>
+    <!-- Section 2: 2-Column High-Contrast Cards Grid -->
+    <section class="max-w-7xl mx-auto px-margin py-space-lg w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-xl items-stretch">
+            
+            <!-- TARJETA 1: HOSPITALITY & GASTRONOMÍA -->
+            <article class="vertical-card flex flex-col justify-between bg-surface-container-lowest rounded-3xl p-8 lg:p-12 shadow-md hover:shadow-xl transition-all duration-300 relative group overflow-hidden" id="card-hospitality">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary-container/40 to-transparent"></div>
+                
+                <div>
+                    <!-- Header Badging & Category -->
+                    <div class="flex items-center justify-between">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">
+                            Hospitality &amp; Gastronomía
+                        </span>
+                        <span class="material-symbols-outlined text-on-surface-variant/40 group-hover:text-primary-container transition-colors">flatware</span>
+                    </div>
+
+                    <!-- Title & Subtitle -->
+                    <h2 class="mt-space-md font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">
+                        POS para Restaurantes y Bares
+                    </h2>
+                    <p class="mt-space-xs font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        Orquestación para salones con rotación acelerada, cocinas de alta demanda y barras con comandas dinámicas sin margen para fricción técnica.
+                    </p>
+
+                    
+
+                    <!-- Feature Bullet List -->
+                    <ul class="mt-space-lg space-y-3">
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-primary text-[14px]">table_restaurant</span>
+                            </div>
+                            <span class="font-body-md text-body-md text-on-surface">
+                                <strong>Mapa de mesas y sincronización en tiempo real:</strong> reflejo instantáneo de ocupación, comensales y estados entre terminales fijos y PDAs móviles.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-primary text-[14px]">receipt_long</span>
+                            </div>
+                            <span class="font-body-md text-body-md text-on-surface">
+                                <strong>Conexión KDS y ruteo a impresoras térmicas:</strong> división automática de órdenes hacia barra, cocina fría o pase caliente sin colisiones.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-primary text-[14px]">inventory_2</span>
+                            </div>
+                            <span class="font-body-md text-body-md text-on-surface">
+                                <strong>Manejo de recetas, mermas e inventario dinámico:</strong> descuento volumétrico por gramaje o mililitro según consumos en tiempo de servicio.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-primary text-[14px]">call_split</span>
+                            </div>
+                            <span class="font-body-md text-body-md text-on-surface">
+                                <strong>Modificadores de menú y cuentas separadas:</strong> gestión de alérgenos, términos de cocción y división de tickets (equitativa o por consumición) en 1 toque.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bottom Footer Metrics & Action -->
+                <div class="mt-space-xl pt-space-lg border-t border-outline-variant/10">
+                    <div class="grid grid-cols-2 gap-space-md mb-space-lg">
+                        <div class="p-space-sm rounded-xl bg-surface-container-low shadow-sm">
+                            <div class="font-display-lg text-headline-lg text-primary font-bold tracking-tight">0 Errores</div>
+                            <div class="font-label-sm text-label-sm text-on-surface-variant font-medium mt-0.5">En pase de comanda a cocina</div>
+                        </div>
+                        <div class="p-space-sm rounded-xl bg-surface-container-low shadow-sm">
+                            <div class="font-display-lg text-headline-lg text-on-surface font-bold tracking-tight">&lt; 3.2s</div>
+                            <div class="font-label-sm text-label-sm text-on-surface-variant font-medium mt-0.5">Rotación media por mesa</div>
+                        </div>
+                    </div>
+                    <a href="/Contacto" class="w-full inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-on-surface text-surface hover:bg-inverse-surface active:scale-[0.99] font-label-lg text-label-lg font-semibold transition-all duration-150 shadow-md group/btn">
+                        <span>Cotizar para Restaurante</span>
+                        <span class="material-symbols-outlined text-[18px] group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- TARJETA 2: RETAIL, BOUTIQUES & CADENAS COMERCIALES -->
+            <article class="vertical-card flex flex-col justify-between bg-surface-container-lowest rounded-3xl p-8 lg:p-12 shadow-md hover:shadow-xl transition-all duration-300 relative group overflow-hidden" id="card-retail">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary-container/40 to-transparent"></div>
+
+                <div>
+                    <!-- Header Badging & Category -->
+                    <div class="flex items-center justify-between">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">
+                            Retail, Boutiques &amp; Cadenas
+                        </span>
+                        <span class="material-symbols-outlined text-on-surface-variant/40 group-hover:text-primary-container transition-colors">storefront</span>
+                    </div>
+
+                    <!-- Title & Subtitle -->
+                    <h2 class="mt-space-md font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">
+                        POS para Retail y Comercio
+                    </h2>
+                    <p class="mt-space-xs font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        Infraestructura para boutiques de alto volumen, tiendas por departamentos y franquicias con sincronización continua entre el piso físico y la nube.
+                    </p>
+
+                    
+
+                    <!-- Feature Bullet List -->
+                    <ul class="mt-space-lg space-y-3">
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-primary text-[14px]">qr_code_scanner</span>
+                            </div>
+                            <span class="font-body-md text-body-md text-on-surface">
+                                <strong>Catálogo masivo y búsqueda instantánea por código / RFID:</strong> respuesta sub-segundo indexando catálogos de más de 250,000 referencias con tallas y colores.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-primary text-[14px]">lan</span>
+                            </div>
+                            <span class="font-body-md text-body-md text-on-surface">
+                                <strong>Sincronización omnicanal con stock online y almacenes:</strong> unificación de carritos web, devoluciones de e-commerce en tienda física y reservas multi-sede.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-primary text-[14px]">loyalty</span>
+                            </div>
+                            <span class="font-body-md text-body-md text-on-surface">
+                                <strong>Devoluciones ágiles, gift cards y club de fidelidad:</strong> emisión inmediata de vales QR, canje multiplataforma y asignación de puntos por ticket consolidado.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-primary text-[14px]">verified_user</span>
+                            </div>
+                            <span class="font-body-md text-body-md text-on-surface">
+                                <strong>Facturación electrónica y arqueo con doble verificación:</strong> emisión de factura legal al vuelo con firma criptográfica y cierre ciego con visor de desvíos.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bottom Footer Metrics & Action -->
+                <div class="mt-space-xl pt-space-lg border-t border-outline-variant/10">
+                    <div class="grid grid-cols-2 gap-space-md mb-space-lg">
+                        <div class="p-space-sm rounded-xl bg-surface-container-low shadow-sm">
+                            <div class="font-display-lg text-headline-lg text-primary font-bold tracking-tight">+99.98%</div>
+                            <div class="font-label-sm text-label-sm text-on-surface-variant font-medium mt-0.5">Precisión de stock multicentro</div>
+                        </div>
+                        <div class="p-space-sm rounded-xl bg-surface-container-low shadow-sm">
+                            <div class="font-display-lg text-headline-lg text-on-surface font-bold tracking-tight">0.18s</div>
+                            <div class="font-label-sm text-label-sm text-on-surface-variant font-medium mt-0.5">Cobro ultra-rápido barcode</div>
+                        </div>
+                    </div>
+                    <a href="/Contacto" class="w-full inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-on-surface text-surface hover:bg-inverse-surface active:scale-[0.99] font-label-lg text-label-lg font-semibold transition-all duration-150 shadow-md group/btn">
+                        <span>Cotizar para Retail</span>
+                        <span class="material-symbols-outlined text-[18px] group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                </div>
+            </article>
+
+        </div>
     </section>
 </div>

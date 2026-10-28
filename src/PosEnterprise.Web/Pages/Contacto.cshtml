@@ -5,55 +5,178 @@
     ViewData["MetaDescription"] = "Solicita una demostración sin compromiso del sistema POS Enterprise para tu restaurante o tienda.";
 }
 
-<section class="hero">
-    <h1>Solicita una Demostración Gratis</h1>
-    <p>Déjanos tus datos y te mostraremos cómo nuestra plataforma impulsa tus ventas.</p>
-</section>
+<div class="flex flex-col w-full">
+    <div class="relative w-full overflow-hidden bg-surface py-space-xl sm:py-24">
+        <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-surface-container-high/40 blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/2 -right-48 w-[32rem] h-[32rem] rounded-full bg-secondary-fixed/30 blur-3xl pointer-events-none"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-margin">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-12 items-start">
+                
+                <!-- Columna Izquierda: Información de Valor -->
+                <div class="lg:col-span-5 flex flex-col pt-space-xs lg:pt-space-md">
+                    <div class="inline-flex items-center gap-space-xs self-start px-3 py-1 rounded-full bg-surface-container text-on-surface-variant mb-space-md">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                        <span class="font-label-sm text-label-sm uppercase tracking-wider">Demostración Personalizada • 30 Minutos</span>
+                    </div>
+                    
+                    <h1 class="font-display-lg text-display-lg text-on-surface tracking-tight leading-tight mb-space-sm">
+                        Arquitectura de cobro sin latencia.
+                    </h1>
+                    
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-space-xl max-w-lg">
+                        Descubre cómo POS Enterprise optimiza el cobro continuo, sincroniza el inventario omnicanal y acelera la operativa de tu negocio en tiempo real.
+                    </p>
 
-<div style="max-width: 600px; margin: 2rem auto; padding: 0 1rem;">
-    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
-    {
-        <div style="background-color: #d1e7dd; color: #0f5132; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
-            @Model.SuccessMessage
+                    <div class="flex flex-col gap-space-md">
+                        <div class="flex items-start gap-space-sm">
+                            <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-primary text-base">verified</span>
+                            </div>
+                            <div>
+                                <h4 class="font-title-md text-title-md text-on-surface">Arquitectura Híbrida Offline-First</h4>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Continúa facturando y cobrando tarjetas sin conexión. Sincronización automática de inventario criptográfico.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-space-sm">
+                            <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-primary text-base">memory</span>
+                            </div>
+                            <div>
+                                <h4 class="font-title-md text-title-md text-on-surface">Hardware con Grado Industrial</h4>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Integración nativa con terminales táctiles, impresoras térmicas ultra-rápidas y pasarelas bancarias E2EE.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-space-sm">
+                            <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-primary text-base">support_agent</span>
+                            </div>
+                            <div>
+                                <h4 class="font-title-md text-title-md text-on-surface">Atención Directa por Ingenieros</h4>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Sin operadores intermedios. Despliegue asistido y migración completa de catálogo en menos de 24 horas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Formulario de Captura -->
+                <div class="lg:col-span-7">
+                    <div class="rounded-2xl bg-surface-container-lowest p-space-lg sm:p-space-xl shadow-xl shadow-surface-dim/30">
+                        <div class="mb-space-lg pb-space-sm">
+                            <div class="inline-flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-surface-container-high/60 text-primary mb-2">
+                                <span class="material-symbols-outlined text-xs">tune</span>
+                                <span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider">Configuración Guiada</span>
+                            </div>
+                            <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+                                Solicita una Demostración Gratis
+                            </h2>
+                            <p class="font-body-md text-body-md text-on-surface-variant mt-1">
+                                Completa tus datos corporativos para que un ingeniero de soluciones prepare un entorno de prueba adaptado a tu sector.
+                            </p>
+                        </div>
+
+                        <!-- Mensaje de Éxito de Razor Model -->
+                        @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+                        {
+                            <div class="mb-space-md p-4 rounded-lg bg-emerald-100 border border-emerald-300 text-emerald-800 font-body-md">
+                                @Model.SuccessMessage
+                            </div>
+                        }
+
+                        <form method="post" aria-label="Formulario de Solicitud de Información" class="flex flex-col gap-space-md" id="demo-form">
+                            
+                            <!-- Nombre y Correo -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="font-label-lg text-label-lg text-on-surface font-medium flex items-center justify-between" asp-for="Input.FullName">
+                                        <span>Nombre Completo <span class="text-error">*</span></span>
+                                    </label>
+                                    <div class="relative">
+                                        <input asp-for="Input.FullName" class="w-full h-12 px-4 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline/70 font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container focus:outline-none transition-all duration-150" placeholder="Ej. Alejandro Morales" />
+                                    </div>
+                                    <span asp-validation-for="Input.FullName" class="text-xs text-red-500 mt-0.5"></span>
+                                </div>
+
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="font-label-lg text-label-lg text-on-surface font-medium flex items-center justify-between" asp-for="Input.Email">
+                                        <span>Correo Electrónico <span class="text-error">*</span></span>
+                                    </label>
+                                    <div class="relative">
+                                        <input asp-for="Input.Email" class="w-full h-12 px-4 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline/70 font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container focus:outline-none transition-all duration-150" placeholder="tu.empresa@dominio.com" />
+                                    </div>
+                                    <span asp-validation-for="Input.Email" class="text-xs text-red-500 mt-0.5"></span>
+                                </div>
+                            </div>
+
+                            <!-- Teléfono y Tipo de Negocio -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="font-label-lg text-label-lg text-on-surface font-medium" asp-for="Input.Phone">
+                                        Teléfono <span class="text-error">*</span>
+                                    </label>
+                                    <div class="relative">
+                                        <input asp-for="Input.Phone" class="w-full h-12 px-4 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline/70 font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container focus:outline-none transition-all duration-150" placeholder="+34 600 000 000" />
+                                    </div>
+                                    <span asp-validation-for="Input.Phone" class="text-xs text-red-500 mt-0.5"></span>
+                                </div>
+
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="font-label-lg text-label-lg text-on-surface font-medium flex items-center justify-between" asp-for="Input.BusinessType">
+                                        <span>Tipo de Negocio <span class="text-error">*</span></span>
+                                    </label>
+                                    <div class="relative">
+                                        <select asp-for="Input.BusinessType" class="w-full h-12 px-4 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container focus:outline-none transition-all duration-150 appearance-none cursor-pointer">
+                                            <option value="">-- Seleccionar --</option>
+                                            <option value="Restaurante">Restaurante / Cafetería / Bar</option>
+                                            <option value="Retail">Tienda / Comercio / Minimarket</option>
+                                            <option value="Otro">Otro</option>
+                                        </select>
+                                        <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-xl">expand_more</span>
+                                    </div>
+                                    <span asp-validation-for="Input.BusinessType" class="text-xs text-red-500 mt-0.5"></span>
+                                </div>
+                            </div>
+
+                            <!-- Mensaje -->
+                            <div class="flex flex-col gap-1.5">
+                                <label class="font-label-lg text-label-lg text-on-surface font-medium flex items-center justify-between" asp-for="Input.Message">
+                                    <span>Mensaje o Consulta <span class="text-error">*</span></span>
+                                </label>
+                                <textarea asp-for="Input.Message" rows="4" class="w-full p-4 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline/70 font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container focus:outline-none transition-all duration-150 resize-none" placeholder="Escribe aquí tu consulta..."></textarea>
+                                <span asp-validation-for="Input.Message" class="text-xs text-red-500 mt-0.5"></span>
+                            </div>
+
+                            <!-- Botón de Envío -->
+                            <div class="pt-space-xs flex flex-col gap-space-sm">
+                                <button type="submit" class="w-full h-14 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-space-xs shadow-md transition-all duration-150 active:scale-[0.99] cursor-pointer">
+                                    <span>Enviar Solicitud</span>
+                                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                                </button>
+                            </div>
+
+                            <!-- Indicadores del pie del formulario -->
+                            <div class="pt-space-md grid grid-cols-1 sm:grid-cols-3 gap-space-sm text-center">
+                                <div class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-surface-container-low">
+                                    <span class="material-symbols-outlined text-primary text-base">cancel</span>
+                                    <span class="font-label-sm text-label-sm text-on-surface font-medium">Sin compromiso</span>
+                                </div>
+                                <div class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-surface-container-low">
+                                    <span class="material-symbols-outlined text-primary text-base">engineering</span>
+                                    <span class="font-label-sm text-label-sm text-on-surface font-medium">Ingenieros de producto</span>
+                                </div>
+                                <div class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-surface-container-low">
+                                    <span class="material-symbols-outlined text-primary text-base">bolt</span>
+                                    <span class="font-label-sm text-label-sm text-on-surface font-medium">Despliegue &lt; 24h</span>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    }
-
-    <form method="post" aria-label="Formulario de Solicitud de Información">
-        <div style="margin-bottom: 1rem;">
-            <label for="FullName" style="display:block; font-weight:bold;">Nombre Completo (*)</label>
-            <input asp-for="Input.FullName" id="FullName" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;" />
-            <span asp-validation-for="Input.FullName" style="color:red; font-size:0.875rem;"></span>
-        </div>
-
-        <div style="margin-bottom: 1rem;">
-            <label for="Email" style="display:block; font-weight:bold;">Correo Electrónico (*)</label>
-            <input asp-for="Input.Email" id="Email" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;" />
-            <span asp-validation-for="Input.Email" style="color:red; font-size:0.875rem;"></span>
-        </div>
-
-        <div style="margin-bottom: 1rem;">
-            <label for="Phone" style="display:block; font-weight:bold;">Teléfono</label>
-            <input asp-for="Input.Phone" id="Phone" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;" />
-            <span asp-validation-for="Input.Phone" style="color:red; font-size:0.875rem;"></span>
-        </div>
-
-        <div style="margin-bottom: 1rem;">
-            <label for="BusinessType" style="display:block; font-weight:bold;">Tipo de Negocio (*)</label>
-            <select asp-for="Input.BusinessType" id="BusinessType" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;">
-                <option value="">-- Seleccionar --</option>
-                <option value="Restaurante">Restaurante / Cafetería / Bar</option>
-                <option value="Retail">Tienda / Comercio / Minimarket</option>
-                <option value="Otro">Otro</option>
-            </select>
-            <span asp-validation-for="Input.BusinessType" style="color:red; font-size:0.875rem;"></span>
-        </div>
-
-        <div style="margin-bottom: 1rem;">
-            <label for="Message" style="display:block; font-weight:bold;">Mensaje o Consulta (*)</label>
-            <textarea asp-for="Input.Message" id="Message" rows="5" style="width:100%; padding: 0.5rem; margin-top: 0.25rem;"></textarea>
-            <span asp-validation-for="Input.Message" style="color:red; font-size:0.875rem;"></span>
-        </div>
-
-        <button type="submit" class="btn-cta-nav" style="border:none; cursor:pointer; width:100%; padding:0.75rem;">Enviar Solicitud</button>
-    </form>
+    </div>
 </div>

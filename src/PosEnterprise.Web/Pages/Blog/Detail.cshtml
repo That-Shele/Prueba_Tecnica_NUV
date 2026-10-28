@@ -5,22 +5,114 @@
     ViewData["MetaDescription"] = string.IsNullOrEmpty(Model.Article.MetaDescription) ? Model.Article.Summary : Model.Article.MetaDescription;
 }
 
-<article style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
-    <header style="margin-bottom: 2rem;">
-        <h1>@Model.Article.Title</h1>
-        <p style="color: #6c757d; font-size: 0.95rem; margin-top: 0.5rem;">
-            Publicado el @Model.Article.PublishedAt.ToString("dd 'de' MMMM, yyyy") por <strong>@Model.Article.Author</strong>
-        </p>
-    </header>
+<!-- Barra de progreso de lectura en la parte superior -->
+<div class="fixed top-16 left-0 w-full h-1 bg-surface-container z-40">
+    <div class="h-full bg-primary-container transition-all duration-150 ease-out w-0" id="read-progress-bar"></div>
+</div>
 
-    <div style="font-size: 1.1rem; line-height: 1.8;">
-        @Html.Raw(Model.Article.Content)
-    </div>
+<section class="w-full px-margin py-space-xl flex justify-center">
+    <article class="w-full max-w-3xl flex flex-col">
+        
+        <!-- Navegación superior -->
+        <div class="flex flex-wrap items-center justify-between gap-space-sm mb-space-lg">
+            <a asp-page="/Blog/Index" class="inline-flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors group">
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-0.5">arrow_back</span>
+                <span>Volver a todos los artículos</span>
+            </a>
+        </div>
 
-    <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #dee2e6;">
-        <a asp-page="/Blog/Index" style="text-decoration: none; color: #0d6efd; font-weight: bold;">&larr; Volver a todos los artículos</a>
-    </footer>
-</article>
+        <!-- Encabezado del Artículo -->
+        <header class="mb-space-lg">
+            <h1 class="font-display-lg text-display-lg text-on-surface tracking-tight mb-space-md font-semibold">
+                @Model.Article.Title
+            </h1>
+
+            <div class="flex flex-wrap items-center justify-between gap-space-md pb-space-lg bg-surface-container-low/50 rounded-xl p-space-md">
+                <div class="flex items-center gap-space-sm">
+                    <div class="relative w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-title-md text-title-md font-semibold">
+                        PE
+                        <span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-surface-container-lowest flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[12px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        </span>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-space-xs">
+                            <span class="font-title-md text-title-md text-on-surface font-medium">Por <strong>@Model.Article.Author</strong></span>
+                        </div>
+                        <span class="font-body-sm text-body-sm text-on-surface-variant">
+                            Publicado el @Model.Article.PublishedAt.ToString("dd 'de' MMMM, yyyy")
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-space-xs">
+                    <button id="copy-btn" title="Copiar enlace" class="w-9 h-9 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-all shadow-sm active:scale-95 cursor-pointer">
+                        <span class="material-symbols-outlined text-[18px]">link</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido HTML del Artículo -->
+        <div class="flex flex-col gap-space-lg font-body-lg text-body-lg text-on-surface-variant leading-relaxed prose prose-slate max-w-none">
+            @Html.Raw(Model.Article.Content)
+        </div>
+
+        <!-- Pie del Artículo y Navegación -->
+        <div class="mt-space-xl pt-space-lg flex flex-wrap items-center justify-between gap-space-md bg-surface-container-low/40 p-space-md rounded-xl">
+            <a asp-page="/Blog/Index" class="inline-flex items-center justify-center gap-space-xs px-space-md py-space-sm rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all active:scale-98">
+                <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                <span>Volver a todos los artículos</span>
+            </a>
+
+            <div class="flex items-center gap-space-xs">
+                <span class="font-label-sm text-label-sm text-on-surface-variant mr-space-xs">Compartir:</span>
+                <button id="copy-btn-2" title="Copiar enlace" class="w-8 h-8 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface flex items-center justify-center transition-all shadow-sm cursor-pointer">
+                    <span class="material-symbols-outlined text-[16px]">share</span>
+                </button>
+            </div>
+        </div>
+
+    </article>
+</section>
+
+<!-- Notificación Toast -->
+<div id="toast" class="fixed bottom-6 right-6 px-4 py-2.5 rounded-lg bg-inverse-surface text-inverse-on-surface font-label-md text-label-md shadow-xl transition-all duration-300 opacity-0 pointer-events-none translate-y-2 flex items-center gap-2 z-50">
+    <span class="material-symbols-outlined text-[18px] text-primary-fixed">check</span>
+    <span>Enlace copiado al portapapeles</span>
+</div>
+
+<!-- Scripts interactivos de la vista -->
+<script>
+    window.addEventListener('scroll', () => {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.scrollY / docHeight) * 100;
+        const bar = document.getElementById('read-progress-bar');
+        if (bar) bar.style.width = Math.min(100, Math.max(0, scrolled)) + '%';
+    });
+
+    function showToast() {
+        const toast = document.getElementById('toast');
+        if (!toast) return;
+        toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+        toast.classList.add('opacity-100', 'translate-y-0');
+        setTimeout(() => {
+            toast.classList.remove('opacity-100', 'translate-y-0');
+            toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+        }, 2500);
+    }
+
+    const copyBtn1 = document.getElementById('copy-btn');
+    const copyBtn2 = document.getElementById('copy-btn-2');
+    [copyBtn1, copyBtn2].forEach(btn => {
+        if (btn) {
+            btn.addEventListener('click', () => {
+                navigator.clipboard?.writeText(window.location.href);
+                showToast();
+            });
+        }
+    });
+</script>
 
 <!-- Datos estructurados Schema.org Article -->
 <script type="application/ld+json">

@@ -5,57 +5,136 @@
     ViewData["MetaDescription"] = "Artículos, guías y buenas prácticas sobre control de inventarios, comanda digital y administración para restaurantes y tiendas.";
 }
 
-<section class="hero">
-    <h1>Blog & Recursos de Gestión para Comercios</h1>
-    <p>Aprende a optimizar la operativa de tu restaurante o tienda con nuestras guías y artículos especializados.</p>
-</section>
+<div class="w-full max-w-7xl mx-auto px-margin-mobile md:px-margin pb-space-xl pt-space-lg md:pt-space-xl">
+    
+    <!-- Encabezado de la Sección -->
+    <header class="pb-space-lg flex flex-col items-start gap-space-sm relative">
+        <h1 class="font-display-lg text-display-lg text-on-surface tracking-tight max-w-4xl font-semibold">
+            Blog & Recursos de Gestión para Comercios
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
+            Aprende a optimizar la operativa de tu restaurante o tienda con nuestras guías y artículos especializados.
+        </p>
+    </header>
 
-<div class="features-grid">
-    @foreach (var article in Model.Articles)
+    @if (Model.Articles != null && Model.Articles.Any())
     {
-        <article class="card">
-            <h2>@article.Title</h2>
-            <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 0.5rem;">
-                Por <strong>@article.Author</strong> | @article.PublishedAt.ToString("dd 'de' MMMM, yyyy")
-            </p>
-            <p>@article.Summary</p>
-            <br />
-            <a asp-page="/Blog/Detail" asp-route-slug="@article.Slug" class="btn-cta-nav">Leer Artículo Completo</a>
-        </article>
+        var articlesList = Model.Articles.ToList();
+        var featuredArticle = articlesList.FirstOrDefault();
+        var gridArticles = articlesList.Skip(1).ToList();
+
+        <!-- Artículo Destacado (Primer elemento, sin imagen ni badges) -->
+        if (featuredArticle != null)
+        {
+            <section class="mb-space-xl">
+                <article class="group relative rounded-xl bg-surface-container-lowest p-space-lg md:p-space-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col justify-between">
+                    <div class="flex flex-col gap-space-sm">
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight group-hover:text-primary transition-colors">
+                            @featuredArticle.Title
+                        </h2>
+                        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            @featuredArticle.Summary
+                        </p>
+                    </div>
+
+                    <div class="mt-space-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pt-space-md bg-surface-container-low/40 rounded-lg px-space-md py-space-sm">
+                        <div class="flex flex-col">
+                            <span class="font-title-md text-title-md text-on-surface">Por <strong>@featuredArticle.Author</strong></span>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant">@featuredArticle.PublishedAt.ToString("dd 'de' MMMM, yyyy")</span>
+                        </div>
+                        <a asp-page="/Blog/Detail" asp-route-slug="@featuredArticle.Slug" class="inline-flex items-center gap-space-xs font-label-lg text-label-lg text-primary hover:text-primary-container transition-colors font-semibold">
+                            Leer Artículo Completo &rarr;
+                        </a>
+                    </div>
+                </article>
+            </section>
+        }
+
+        <!-- Grid Principal de Artículos (Sin categorías, imágenes, íconos ni tiempo de lectura) -->
+        @if (gridArticles.Any())
+        {
+            <section class="mb-space-xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                    @foreach (var article in gridArticles)
+                    {
+                        <article class="group rounded-xl bg-surface-container-lowest p-space-lg shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+                            <div class="flex flex-col gap-space-sm">
+                                <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight group-hover:text-primary transition-colors line-clamp-2">
+                                    @article.Title
+                                </h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                                    Por <strong>@article.Author</strong> | @article.PublishedAt.ToString("dd 'de' MMMM, yyyy")
+                                </p>
+                                <p class="font-body-md text-body-md text-on-surface-variant mt-space-xs line-clamp-3">
+                                    @article.Summary
+                                </p>
+                            </div>
+
+                            <div class="pt-space-md mt-space-md flex items-center justify-between border-t border-surface-container-low">
+                                <a asp-page="/Blog/Detail" asp-route-slug="@article.Slug" class="inline-flex items-center gap-1 font-label-lg text-label-lg text-primary font-semibold hover:text-primary-container transition-colors">
+                                    Leer Artículo Completo &rarr;
+                                </a>
+                            </div>
+                        </article>
+                    }
+                </div>
+            </section>
+        }
     }
-</div>
+    else
+    {
+        <div class="py-space-xl text-center text-on-surface-variant">
+            <p>No se encontraron artículos en el blog.</p>
+        </div>
+    }
 
-@if (Model.TotalPages > 0)
-{
-    <nav aria-label="Navegación de páginas del blog" style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;">
-        @if (Model.HasPreviousPage)
-        {
-            <a asp-page="/Blog/Index" asp-route-p="@(Model.CurrentPage - 1)" class="pagination-link">&laquo; Anterior</a>
-        }
-        else
-        {
-            <span class="pagination-link disabled">&laquo; Anterior</span>
-        }
-
-        @for (int i = 1; i <= Model.TotalPages; i++)
-        {
-            if (i == Model.CurrentPage)
+    <!-- Controles de Paginación -->
+    @if (Model.TotalPages > 0)
+    {
+        <nav aria-label="Navegación de páginas del blog" class="flex items-center justify-center gap-space-xs mb-space-xl">
+            @if (Model.HasPreviousPage)
             {
-                <span class="pagination-link active" aria-current="page">@i</span>
+                <a asp-page="/Blog/Index" asp-route-p="@(Model.CurrentPage - 1)" class="inline-flex items-center justify-center px-space-md h-10 rounded-full font-label-lg text-label-lg text-on-surface hover:bg-surface-container transition-colors bg-surface-container-low">
+                    &laquo; Anterior
+                </a>
             }
             else
             {
-                <a asp-page="/Blog/Index" asp-route-p="@i" class="pagination-link">@i</a>
+                <span class="inline-flex items-center justify-center px-space-md h-10 rounded-full font-label-lg text-label-lg text-outline cursor-not-allowed bg-surface-container-low opacity-60">
+                    &laquo; Anterior
+                </span>
             }
-        }
 
-        @if (Model.HasNextPage)
-        {
-            <a asp-page="/Blog/Index" asp-route-p="@(Model.CurrentPage + 1)" class="pagination-link">Siguiente &raquo;</a>
-        }
-        else
-        {
-            <span class="pagination-link disabled">Siguiente &raquo;</span>
-        }
-    </nav>
-}
+            <div class="flex items-center gap-1">
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    if (i == Model.CurrentPage)
+                    {
+                        <span class="w-10 h-10 rounded-full font-label-lg text-label-lg bg-primary-container text-on-primary font-semibold shadow-sm flex items-center justify-center" aria-current="page">
+                            @i
+                        </span>
+                    }
+                    else
+                    {
+                        <a asp-page="/Blog/Index" asp-route-p="@i" class="w-10 h-10 rounded-full font-label-lg text-label-lg text-on-surface hover:bg-surface-container transition-colors flex items-center justify-center">
+                            @i
+                        </a>
+                    }
+                }
+            </div>
+
+            @if (Model.HasNextPage)
+            {
+                <a asp-page="/Blog/Index" asp-route-p="@(Model.CurrentPage + 1)" class="inline-flex items-center justify-center px-space-md h-10 rounded-full font-label-lg text-label-lg text-on-surface hover:bg-surface-container transition-colors bg-surface-container-low">
+                    Siguiente &raquo;
+                </a>
+            }
+            else
+            {
+                <span class="inline-flex items-center justify-center px-space-md h-10 rounded-full font-label-lg text-label-lg text-outline cursor-not-allowed bg-surface-container-low opacity-60">
+                    Siguiente &raquo;
+                </span>
+            }
+        </nav>
+    }
+</div>

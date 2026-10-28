@@ -5,23 +5,398 @@
     ViewData["MetaDescription"] = "Optimiza la facturación, inventarios y comandas de tu negocio con nuestro software POS ágil, confiable y con persistencia en la nube.";
 }
 
-<section class="hero">
-    <h1>Soluciones Punto de Venta Diseñadas para Crecer</h1>
-    <p>Agiliza el cobro, controla tu stock en tiempo real y gestiona tus pedidos desde una plataforma unificada y fácil de usar.</p>
-    <a asp-page="/Contacto" class="btn-cta-nav" style="font-size: 1.1rem; padding: 0.75rem 1.5rem;">Solicitar una Demostración</a>
+<section class="relative w-full min-h-[921px] flex flex-col justify-between items-center px-margin pt-space-xl pb-space-lg overflow-hidden">
+<!-- Ambient Precision Glow -->
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[340px] bg-primary-container/5 rounded-full blur-[140px] pointer-events-none"></div>
+<div class="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center">
+<!-- Minimalist Pill Badge -->
+<div class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-surface-container-low shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">NUEVA GENERACIÓN POS • PLATAFORMA CLOUD 2025</span>
+</div>
+<!-- Main Headline -->
+<h1 class="font-display-lg text-display-lg md:text-[56px] md:leading-[1.1] text-on-surface tracking-tight max-w-4xl mx-auto mt-space-md">
+        Soluciones Punto de Venta Diseñadas para Crecer
+      </h1>
+<!-- Precise Subtitle -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-space-md leading-relaxed font-normal">
+        Agiliza el cobro, controla tu stock en tiempo real y gestiona tus pedidos desde una plataforma unificada y fácil de usar.
+      </p>
+<!-- CTA Buttons Group -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-space-md mt-space-lg w-full sm:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg shadow-sm hover:opacity-95 transition-all duration-200 active:scale-[0.99]" asp-page="/Contacto">
+          Solicitar una Demostración
+        </a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-lg text-label-lg transition-all duration-200" href="#capacidades">
+          Explorar Funciones
+        </a>
+</div>
+</div>
+<!-- Minimalist Hardware / Glass POS Terminal Dashboard Preview -->
+<div class="relative z-10 w-full max-w-5xl mx-auto mt-space-xl">
+<div class="bg-surface-container-lowest/90 backdrop-blur-xl rounded-xl shadow-xl overflow-hidden p-space-md md:p-space-lg">
+<!-- Terminal Top Bar -->
+<div class="flex items-center justify-between pb-space-md">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-highest"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-highest"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-highest"></span>
+</div>
+<div class="hidden sm:flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-primary-container">dns</span>
+<span>TERMINAL ID: POS-7740 • NODO CENTRAL (LATENCIA: 14ms)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm font-label-sm text-label-sm">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container text-on-surface font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+              EN LÍNEA
+            </span>
+<span class="text-on-surface-variant font-mono">14:32:08 UTC</span>
+</div>
+</div>
+<!-- Terminal Interactive Mock Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md pt-space-xs">
+<!-- Catalog & Velocity Stream (Left Panel) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Fast Metrics Strip -->
+<div class="grid grid-cols-3 gap-space-sm">
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Volumen Turno</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-1">$48,290.50</span>
+<span class="font-body-sm text-body-sm text-primary font-medium mt-0.5">+18.4% vs promedio</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Tickets Procesados</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-1">428 op</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">0 rechazos</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Tiempo Promedio</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-1">0.68s</span>
+<span class="font-body-sm text-body-sm text-primary font-medium mt-0.5">NFC instantáneo</span>
+</div>
+</div>
+<!-- Real-time Sparkline & Activity Graph -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-title-md text-title-md text-on-surface">Curva Transaccional Continua</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Últimas 6 horas (pico 13:45)</span>
+</div>
+<div class="w-full h-24 flex items-end">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 500 80">
+<path class="text-primary-container" d="M0,60 Q40,55 80,45 T160,50 T240,25 T320,15 T400,30 T480,10 L500,8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path>
+<path class="text-primary-container/10" d="M0,60 Q40,55 80,45 T160,50 T240,25 T320,15 T400,30 T480,10 L500,8 L500,80 L0,80 Z" fill="currentColor"></path>
+</svg>
+</div>
+</div>
+<!-- Quick Item Matrix -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm">
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">SKU-902</span>
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+</div>
+<div class="my-space-xs">
+<p class="font-label-lg text-label-lg text-on-surface truncate">Café Espresso Reserva</p>
+<p class="font-label-sm text-label-sm font-mono text-on-surface-variant">$3.80</p>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Stock: 142 ud</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">SKU-811</span>
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+</div>
+<div class="my-space-xs">
+<p class="font-label-lg text-label-lg text-on-surface truncate">Croissant Artesanal</p>
+<p class="font-label-sm text-label-sm font-mono text-on-surface-variant">$4.20</p>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Stock: 38 ud</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">SKU-405</span>
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+</div>
+<div class="my-space-xs">
+<p class="font-label-lg text-label-lg text-on-surface truncate">Matcha Ceremonial</p>
+<p class="font-label-sm text-label-sm font-mono text-on-surface-variant">$5.50</p>
+</div>
+<span class="font-body-sm text-body-sm text-tertiary font-medium">Bajo: 6 ud</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">SKU-119</span>
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+</div>
+<div class="my-space-xs">
+<p class="font-label-lg text-label-lg text-on-surface truncate">Bowl Granola Silvestre</p>
+<p class="font-label-sm text-label-sm font-mono text-on-surface-variant">$8.90</p>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Stock: 24 ud</span>
+</div>
+</div>
+</div>
+<!-- Checkout & Active Order Drawer (Right Panel) -->
+<div class="lg:col-span-4 bg-surface-container-low rounded-lg p-space-md flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div>
+<span class="font-title-md text-title-md text-on-surface">Comanda #1042</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Mesa 08 • Salón Principal</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">En Proceso</span>
+</div>
+<!-- Cart Row Items -->
+<div class="space-y-2 mt-2">
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest text-on-surface text-body-md font-body-md">
+<div class="flex items-center gap-2">
+<span class="font-mono text-on-surface-variant text-label-sm font-label-sm">2×</span>
+<span>Espresso Reserva</span>
+</div>
+<span class="font-mono font-medium">$7.60</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest text-on-surface text-body-md font-body-md">
+<div class="flex items-center gap-2">
+<span class="font-mono text-on-surface-variant text-label-sm font-label-sm">1×</span>
+<span>Croissant Artesanal</span>
+</div>
+<span class="font-mono font-medium">$4.20</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest text-on-surface text-body-md font-body-md">
+<div class="flex items-center gap-2">
+<span class="font-mono text-on-surface-variant text-label-sm font-label-sm">1×</span>
+<span>Bowl Granola</span>
+</div>
+<span class="font-mono font-medium">$8.90</span>
+</div>
+</div>
+</div>
+<!-- Cart Calculation Breakdown -->
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>Subtotal</span>
+<span class="font-mono">$20.70</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>IVA (16%)</span>
+<span class="font-mono">$3.31</span>
+</div>
+<div class="flex justify-between text-headline-sm font-headline-sm text-on-surface pt-1">
+<span>Total</span>
+<span class="font-mono text-primary">$24.01</span>
+</div>
+<button class="w-full mt-3 py-3 rounded-md bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">contactless</span>
+                Cobro NFC / Terminal
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<section class="features-grid">
-    <article class="card">
-        <h2>Control de Stock en Tiempo Real</h2>
-        <p>Mantén la trazabilidad exacta de tus insumos o productos en mostrador, generando alertas automáticas de reabastecimiento.</p>
-    </article>
-    <article class="card">
-        <h2>Comandas Digitales para Gastronomía</h2>
-        <p>Envía pedidos desde la mesa directamente a la cocina o barra, eliminando tiempos muertos y errores de comanda.</p>
-    </article>
-    <article class="card">
-        <h2>Reportes e Inteligencia de Negocio</h2>
-        <p>Visualiza el volumen de ventas por turno, productos más vendidos y rendimiento financiero desde cualquier dispositivo.</p>
-    </article>
+<!-- METRICS / TRUST SECTION: Tesla-like hyper-clean inline metrics -->
+<section class="w-full bg-surface-container-lowest py-space-xl">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-lg text-center md:text-left">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight">99.99%</span>
+<span class="font-title-md text-title-md text-on-surface mt-1">Disponibilidad</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">SLA garantizado por contrato</span>
+</div>
+<div class="flex flex-col items-center md:items-start">
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight">+15,000</span>
+<span class="font-title-md text-title-md text-on-surface mt-1">Puntos Activos</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">En retail, franquicias y alta cocina</span>
+</div>
+<div class="flex flex-col items-center md:items-start">
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight">&lt; 0.8s</span>
+<span class="font-title-md text-title-md text-on-surface mt-1">Tiempo por Transacción</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">De lectura óptica a ticket fiscal</span>
+</div>
+<div class="flex flex-col items-center md:items-start">
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight">24/7</span>
+<span class="font-title-md text-title-md text-on-surface mt-1">Soporte Enterprise</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Ingenieros de campo dedicados</span>
+</div>
+</div>
+</div>
+</section>
+<!-- KEY CAPABILITIES SECTION: 3-Column Bento/Grid -->
+<section class="w-full py-space-xl px-margin" id="capacidades">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
+<!-- Section Header -->
+<div class="flex flex-col items-start max-w-2xl">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">CAPACIDADES CLAVE</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-space-xs">
+          Tecnología diseñada para operar sin fricción
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-space-xs leading-relaxed">
+          Infraestructura transaccional optimizada para ritmos intensivos de venta física, eliminando colas y errores humanos en milisegundos.
+        </p>
+</div>
+<!-- 3 Feature Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Tarjeta 1: Stock en Tiempo Real -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary mb-space-md">
+<span class="material-symbols-outlined text-[24px]">inventory_2</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Control de Stock en Tiempo Real</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs leading-relaxed">
+              Mantén la trazabilidad exacta de tus insumos o productos en mostrador, generando alertas automáticas de reabastecimiento.
+            </p>
+</div>
+<!-- Micro-UI: Stock telemetry widget -->
+<div class="mt-space-lg p-space-md rounded-lg bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface font-medium">Harina Molida Seleccionada</span>
+<span class="text-tertiary font-bold">12% Restante</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full w-[12%]"></div>
+</div>
+<div class="flex items-center justify-between pt-1 text-body-sm font-body-sm text-on-surface-variant">
+<span>Alerta automática disparada</span>
+<span class="text-primary font-medium cursor-pointer">OC #5021 Generada</span>
+</div>
+</div>
+</div>
+<!-- Tarjeta 2: Comandas Digitales para Gastronomía -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary mb-space-md">
+<span class="material-symbols-outlined text-[24px]">soup_kitchen</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Comandas Digitales para Gastronomía</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs leading-relaxed">
+              Envía pedidos desde la mesa directamente a la cocina o barra, eliminando tiempos muertos y errores de comanda.
+            </p>
+</div>
+<!-- Micro-UI: Live Kitchen KDS Ticket -->
+<div class="mt-space-lg p-space-md rounded-lg bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">KDS • BARRA FRÍA</span>
+</div>
+<span class="font-mono text-label-sm font-label-sm text-on-surface-variant">T +1:20 min</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded text-body-sm font-body-sm flex justify-between items-center text-on-surface">
+<span>2× Risotto Funghi (Sin Gluten)</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-primary font-medium text-label-sm font-label-sm">En Marcha</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant pt-0.5">
+<span>Mozo: Terminal 04</span>
+<span class="text-on-surface font-medium">Sincronizado 100%</span>
+</div>
+</div>
+</div>
+<!-- Tarjeta 3: Reportes e Inteligencia de Negocio -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary mb-space-md">
+<span class="material-symbols-outlined text-[24px]">monitoring</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Reportes e Inteligencia de Negocio</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs leading-relaxed">
+              Visualiza el volumen de ventas por turno, productos más vendidos y rendimiento financiero desde cualquier dispositivo.
+            </p>
+</div>
+<!-- Micro-UI: Shift Sales Bars Visualizer -->
+<div class="mt-space-lg p-space-md rounded-lg bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface font-medium">Ventas por Turno</span>
+<span class="font-mono text-primary font-bold">$12,480 Turno Mañana</span>
+</div>
+<div class="flex items-end gap-1.5 h-12 pt-2">
+<div class="flex-1 bg-surface-container-highest rounded-t h-[40%]"></div>
+<div class="flex-1 bg-surface-container-highest rounded-t h-[65%]"></div>
+<div class="flex-1 bg-primary-container rounded-t h-[95%]"></div>
+<div class="flex-1 bg-surface-container-highest rounded-t h-[80%]"></div>
+<div class="flex-1 bg-surface-container-highest rounded-t h-[55%]"></div>
+<div class="flex-1 bg-surface-container-highest rounded-t h-[30%]"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant pt-1">
+<span>08:00</span>
+<span>12:00 (Pico)</span>
+<span>16:00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- HARDWARE & EXPERIENCE SPOTLIGHT (Visual Editorial Component) -->
+<section class="w-full py-space-xl px-margin bg-surface-container-low">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<div class="lg:col-span-5 flex flex-col items-start">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">ARQUITECTURA AUTOMOTRIZ</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-space-xs">
+          Diseñado para soportar millones de toques diarios
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-space-sm leading-relaxed">
+          Nuestras estaciones de aluminio anodizado y pantallas ópticamente adheridas no sufren degradación térmica ni cuelgues de software bajo condiciones críticas de operación comercial.
+        </p>
+<div class="mt-space-lg flex flex-col gap-space-sm w-full">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">verified</span>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Offline-First Resiliente</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Continúa facturando y cobrando tarjetas incluso si cae la red local o internet por completo.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">shield</span>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Cifrado Bancario Grado E2EE</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cumplimiento total con normativas PCI-PTS 6.x y tokenización remota directa a banco adquirente.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 relative">
+<div class="relative overflow-hidden rounded-xl shadow-xl aspect-[16/10] bg-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="High-end sleek industrial automotive grade POS terminal on a polished architectural marble counter, studio dramatic lighting, Tesla aesthetic minimalist engineering, pure clean lines, brushed aluminum bezel with subtle blue status indicator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC1WJFO-2cko9E7FdABM_ANfiXCYYjWf347JN_KOraAO0by1p_IAJ4SNqBf9_YT3TZQXlDi_KqyJ0p8YkQSyJU9YPfk08Z4tDhWQeA3r5HSClXlt7k0eIDQZxGzMdzVCYOn89KjgZNO0eoQVI2aD3XVgKKetfGOM-AESp3jHDAvQvq5RilloOd255J5Y-6E87Olv4Q2sBKAvDx66xfL64jUF2wXt8okvrCowCtypA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-space-md left-space-md right-space-md flex items-center justify-between text-on-secondary">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-fixed">CHASIS UNIBODY SERIE X</span>
+<p class="font-title-md text-title-md font-semibold">Aluminio aeroespacial y cristal antirreflejo</p>
+</div>
+<span class="font-mono text-label-md font-label-md px-2.5 py-1 rounded bg-inverse-surface/80 backdrop-blur-md">0.00% latencia táctil</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FINAL CTA BANNER: Tesla Minimalist High-Contrast Statement -->
+<section class="w-full py-space-xl px-margin">
+<div class="max-w-7xl mx-auto">
+<div class="relative rounded-2xl bg-on-surface text-surface-bright px-space-lg py-space-xl md:py-24 text-center overflow-hidden shadow-xl">
+<!-- Minimal Ambient Gradient Halo -->
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary-container/20 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed font-semibold">DESPLIEGUE INMEDIATO</span>
+<h2 class="font-display-lg text-display-lg text-surface-bright tracking-tight mt-space-xs max-w-2xl">
+            Transforma la operativa de tu negocio hoy
+          </h2>
+<p class="font-body-lg text-body-lg text-outline-variant max-w-xl mx-auto mt-space-md leading-relaxed">
+            Migración sin interrupciones en menos de 24 horas. Compatible con tus terminales bancarias y sistemas contables actuales.
+          </p>
+<div class="mt-space-lg flex flex-col sm:flex-row items-center justify-center gap-space-md w-full sm:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-surface-bright text-on-surface hover:bg-surface-container-highest font-label-lg text-label-lg transition-all duration-200 shadow-md" asp-page="/Contacto">
+              Solicitar Demo Personalizada
+            </a>
+</div>
+<p class="font-label-sm text-label-sm text-outline-variant/80 mt-space-md">
+            Sin contratos de permanencia forzosa • Capacitación in-situ incluida
+          </p>
+</div>
+</div>
+</div>
 </section>

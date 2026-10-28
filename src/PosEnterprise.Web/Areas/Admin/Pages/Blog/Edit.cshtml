@@ -6,66 +6,123 @@
 
 <link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" rel="stylesheet" />
 
-<div class="editor-card">
-    <h2 class="editor-title">Editar Artículo</h2>
+<div class="w-full max-w-5xl mx-auto px-margin-mobile md:px-margin py-space-lg md:py-space-xl">
+    
+    <!-- Navegación de Migas de Pan -->
+    <div class="flex items-center justify-between gap-space-sm mb-space-lg">
+        <nav class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant flex-wrap">
+            <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+            <span>Admin</span>
+            <span class="text-outline-variant">/</span>
+            <span>Blog</span>
+            <span class="text-outline-variant">/</span>
+            <span class="text-on-surface font-semibold">Editar Artículo</span>
+        </nav>
+    </div>
 
-    <form method="post" id="blogForm">
-        <input type="hidden" asp-for="Input.Id" />
-
-        <div class="form-group">
-            <label for="Title" class="editor-label">Title</label>
-            <input asp-for="Input.Title" id="Title" class="editor-input" />
-            <span asp-validation-for="Input.Title" class="text-danger"></span>
+    <!-- Contenedor Principal -->
+    <div class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-md sm:p-space-lg md:p-space-xl flex flex-col gap-space-xl border border-surface-container-high/60">
+        
+        <!-- Encabezado -->
+        <div class="pb-space-md border-b border-surface-container-low">
+            <h1 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">
+                Editar Artículo
+            </h1>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-1">
+                Modifica el contenido y parámetros de la publicación.
+            </p>
         </div>
 
-        <div class="form-group">
-            <label for="Slug" class="editor-label">Slug URL</label>
-            <input asp-for="Input.Slug" id="Slug" class="editor-input" />
-            <span asp-validation-for="Input.Slug" class="text-danger"></span>
-        </div>
+        <form method="post" id="blogForm" class="flex flex-col gap-space-lg">
+            
+            <input type="hidden" asp-for="Input.Id" />
 
-        <div class="form-group">
-            <label for="Summary" class="editor-label">Summary / Extracto</label>
-            <textarea asp-for="Input.Summary" id="Summary" class="editor-input" rows="2"></textarea>
-            <span asp-validation-for="Input.Summary" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label class="editor-label">Description</label>
-            <input type="hidden" asp-for="Input.Content" id="editorContent" />
-            <div id="quill-editor" style="min-height: 280px; background: #fff;"></div>
-            <span asp-validation-for="Input.Content" class="text-danger"></span>
-        </div>
-
-        <div class="editor-footer">
-            <div class="form-group-inline">
-                <label for="Author" class="editor-label">Autor:</label>
-                <input asp-for="Input.Author" id="Author" class="editor-input-sm" />
+            <!-- Título -->
+            <div class="flex flex-col gap-space-xs">
+                <label asp-for="Input.Title" class="font-label-lg text-label-lg text-on-surface font-semibold">
+                    Título del Artículo
+                </label>
+                <input asp-for="Input.Title" id="Title" class="w-full h-12 px-space-md rounded-lg bg-surface-container-low text-on-surface font-title-md text-title-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container focus:outline-none transition-all" />
+                <span asp-validation-for="Input.Title" class="text-xs text-error font-medium mt-0.5"></span>
             </div>
 
-            <div class="form-group-checkbox">
-                <input asp-for="Input.IsPublished" id="IsPublished" type="checkbox" />
-                <label for="IsPublished">Artículo visible en el Blog</label>
+            <!-- Slug URL (Editable en vista de edición) -->
+            <div class="flex flex-col gap-space-xs">
+                <label asp-for="Input.Slug" class="font-label-lg text-label-lg text-on-surface font-semibold">
+                    Slug URL
+                </label>
+                <input asp-for="Input.Slug" id="Slug" class="w-full h-10 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container focus:outline-none transition-all" />
+                <span asp-validation-for="Input.Slug" class="text-xs text-error font-medium mt-0.5"></span>
             </div>
 
-            <button type="submit" class="btn-submit">Actualizar Artículo</button>
-            <a asp-page="/Blog/Index" style="color: #6c757d; text-decoration:none;">Cancelar</a>
-        </div>
-    </form>
+            <!-- Summary / Extracto -->
+            <div class="flex flex-col gap-space-xs">
+                <label asp-for="Input.Summary" class="font-label-lg text-label-lg text-on-surface font-semibold">
+                    Summary / Extracto
+                </label>
+                <textarea asp-for="Input.Summary" id="Summary" rows="2" class="w-full px-space-md py-space-sm rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container focus:outline-none transition-all resize-none"></textarea>
+                <span asp-validation-for="Input.Summary" class="text-xs text-error font-medium mt-0.5"></span>
+            </div>
+
+            <!-- Editor WYSIWYG -->
+            <div class="flex flex-col gap-space-xs">
+                <label class="font-label-lg text-label-lg text-on-surface font-semibold">
+                    Contenido del Artículo
+                </label>
+                <input type="hidden" asp-for="Input.Content" id="editorContent" />
+                <div class="rounded-xl overflow-hidden shadow-sm border border-surface-container-high" id="quillWrapper">
+                    <div id="quill-editor" style="min-height: 320px;" class="bg-surface-container-lowest font-body-lg text-body-lg text-on-surface"></div>
+                </div>
+                <span asp-validation-for="Input.Content" class="text-xs text-error font-medium mt-0.5"></span>
+            </div>
+
+            <!-- Metadatos de Publicación -->
+            <div class="bg-surface-container-low rounded-xl p-space-md sm:p-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md">
+                
+                <!-- Autor -->
+                <div class="flex flex-col gap-1 w-full md:w-1/2">
+                    <label asp-for="Input.Author" class="font-label-md text-label-md text-on-surface font-semibold">Autor:</label>
+                    <input asp-for="Input.Author" id="Author" class="w-full h-10 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline-variant/40 focus:outline-none focus:ring-2 focus:ring-primary-container" />
+                </div>
+
+                <!-- Visible Checkbox -->
+                <div class="flex items-center gap-space-xs cursor-pointer select-none self-start md:self-center pt-2 md:pt-0">
+                    <input asp-for="Input.IsPublished" id="IsPublished" type="checkbox" class="w-5 h-5 rounded text-primary-container focus:ring-primary-container accent-primary-container cursor-pointer" />
+                    <label asp-for="Input.IsPublished" class="font-label-md text-label-md text-on-surface font-medium cursor-pointer">
+                        Artículo visible en el Blog
+                    </label>
+                </div>
+            </div>
+
+            <!-- Botones de Guardar / Cancelar -->
+            <div class="flex items-center justify-end gap-space-md pt-space-md">
+                <a asp-page="/Blog/Index" class="px-space-lg py-2.5 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-label-lg text-label-lg transition-colors">
+                    Cancelar
+                </a>
+                <button type="submit" class="px-space-xl py-3 rounded-full bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg font-semibold shadow-md hover:shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer">
+                    <span class="material-symbols-outlined text-[20px]">sync</span>
+                    <span>Actualizar Artículo</span>
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <style>
-    .editor-card { max-width: 850px; margin: 2rem auto; padding: 2rem; background: #ffffff; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); border: 1px solid #dee2e6; }
-    .editor-title { margin-bottom: 1.5rem; font-size: 1.4rem; color: #212529; }
-    .form-group { margin-bottom: 1.25rem; }
-    .editor-label { display: block; font-weight: 600; color: #495057; margin-bottom: 0.4rem; }
-    .editor-input { width: 100%; padding: 0.6rem 0.8rem; border: 1px solid #ced4da; border-radius: 6px; font-size: 1rem; outline: none; }
-    .text-danger { color: #dc3545; font-size: 0.85rem; margin-top: 0.25rem; display: block; }
-    .editor-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #e9ecef; }
-    .editor-input-sm { padding: 0.4rem 0.6rem; border: 1px solid #ced4da; border-radius: 4px; }
-    .btn-submit { background-color: #0d6efd; color: #ffffff; border: none; padding: 0.65rem 1.5rem; border-radius: 6px; font-weight: 600; cursor: pointer; }
-    .ql-toolbar { border-top-left-radius: 6px; border-top-right-radius: 6px; background: #f8f9fa; }
-    .ql-container { border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; font-size: 1rem; }
+    .ql-toolbar.ql-snow {
+        background-color: #eff4ff !important;
+        border: none !important;
+        border-bottom: 1px solid #c3c6d7 !important;
+        padding: 8px 12px !important;
+    }
+    .ql-container.ql-snow {
+        border: none !important;
+        font-family: 'Inter', sans-serif !important;
+    }
+    .ql-editor {
+        padding: 16px !important;
+        min-height: 280px;
+    }
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
@@ -85,12 +142,13 @@
             }
         });
 
-        // Cargar el contenido HTML traído desde SQL Server
+        // Cargar el contenido guardado en la base de datos
         var initialContent = document.getElementById('editorContent').value;
         if (initialContent) {
             quill.clipboard.dangerouslyPasteHTML(initialContent);
         }
 
+        // Subida de imágenes a C#
         quill.getModule('toolbar').addHandler('image', function () {
             var fileInput = document.createElement('input');
             fileInput.setAttribute('type', 'file');
@@ -122,6 +180,7 @@
             };
         });
 
+        // Sincronizar HTML antes del Submit
         var form = document.getElementById('blogForm');
         form.addEventListener('submit', function () {
             var html = quill.root.innerHTML;
