@@ -27,6 +27,23 @@ public class BlogRepository : IBlogRepository
             .ToListAsync();
     }
 
+    public async Task<(IEnumerable<BlogPost> Items, int TotalCount)> GetPublishedPostsPaginatedAsync(int pageNumber, int pageSize)
+    {
+        var query = _context.BlogPosts
+            .AsNoTracking()
+            .Where(PublishedPostSpec.IsPublishedAndReady());
+
+        var totalCount = await query.CountAsync();
+
+        var items = await query
+            .OrderByDescending(b => b.PublishedAt)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        return (items, totalCount);
+    }
+
     public async Task<BlogPost?> GetBySlugAsync(string slug)
     {
         return await _context.BlogPosts

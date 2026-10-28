@@ -6,7 +6,7 @@
 }
 
 <section class="hero">
-    <h1>Blog & Recurso de Gestión para Comercios</h1>
+    <h1>Blog & Recursos de Gestión para Comercios</h1>
     <p>Aprende a optimizar la operativa de tu restaurante o tienda con nuestras guías y artículos especializados.</p>
 </section>
 
@@ -24,3 +24,38 @@
         </article>
     }
 </div>
+
+@if (Model.TotalPages > 0)
+{
+    <nav aria-label="Navegación de páginas del blog" style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;">
+        @if (Model.HasPreviousPage)
+        {
+            <a asp-page="/Blog/Index" asp-route-p="@(Model.CurrentPage - 1)" class="pagination-link">&laquo; Anterior</a>
+        }
+        else
+        {
+            <span class="pagination-link disabled">&laquo; Anterior</span>
+        }
+
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            if (i == Model.CurrentPage)
+            {
+                <span class="pagination-link active" aria-current="page">@i</span>
+            }
+            else
+            {
+                <a asp-page="/Blog/Index" asp-route-p="@i" class="pagination-link">@i</a>
+            }
+        }
+
+        @if (Model.HasNextPage)
+        {
+            <a asp-page="/Blog/Index" asp-route-p="@(Model.CurrentPage + 1)" class="pagination-link">Siguiente &raquo;</a>
+        }
+        else
+        {
+            <span class="pagination-link disabled">Siguiente &raquo;</span>
+        }
+    </nav>
+}
