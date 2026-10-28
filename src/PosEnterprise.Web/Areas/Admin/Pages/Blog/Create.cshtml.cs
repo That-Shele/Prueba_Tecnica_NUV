@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using PosEnterprise.Core.DTOs;
 using PosEnterprise.Core.Entities;
 using PosEnterprise.Core.Interfaces;
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace PosEnterprise.Web.Areas.Admin.Pages.Blog;
@@ -18,37 +18,7 @@ public class CreateModel : PageModel
     }
 
     [BindProperty]
-    public InputModel Input { get; set; } = new();
-
-    public class InputModel
-    {
-        [Required(ErrorMessage = "El título es obligatorio.")]
-        [StringLength(200)]
-        public string Title { get; set; } = string.Empty;
-
-        [Required(ErrorMessage = "El Slug URL es obligatorio.")]
-        [StringLength(200)]
-        public string Slug { get; set; } = string.Empty;
-
-        [Required(ErrorMessage = "El resumen es obligatorio.")]
-        [StringLength(500)]
-        public string Summary { get; set; } = string.Empty;
-
-        [Required(ErrorMessage = "El contenido es obligatorio.")]
-        public string Content { get; set; } = string.Empty;
-
-        [Required(ErrorMessage = "El autor es obligatorio.")]
-        [StringLength(100)]
-        public string Author { get; set; } = "Equipo POS Enterprise";
-
-        public bool IsPublished { get; set; } = true;
-
-        [StringLength(200)]
-        public string? MetaTitle { get; set; }
-
-        [StringLength(300)]
-        public string? MetaDescription { get; set; }
-    }
+    public BlogPostEditorDto Input { get; set; } = new();
 
     public void OnGet() { }
 
@@ -59,6 +29,7 @@ public class CreateModel : PageModel
             return Page();
         }
 
+        // Mapeo de DTO a Entidad de Dominio
         var post = new BlogPost
         {
             Title = Input.Title,
@@ -67,14 +38,14 @@ public class CreateModel : PageModel
             Content = Input.Content,
             Author = Input.Author,
             IsPublished = Input.IsPublished,
-            MetaTitle = string.IsNullOrEmpty(Input.MetaTitle) ? Input.Title : Input.MetaTitle,
-            MetaDescription = string.IsNullOrEmpty(Input.MetaDescription) ? Input.Summary : Input.MetaDescription,
+            MetaTitle = string.IsNullOrWhiteSpace(Input.MetaTitle) ? Input.Title : Input.MetaTitle,
+            MetaDescription = string.IsNullOrWhiteSpace(Input.MetaDescription) ? Input.Summary : Input.MetaDescription,
             PublishedAt = DateTime.UtcNow
         };
 
         await _blogRepository.AddAsync(post);
 
-        TempData["Message"] = "Artículo creado exitosamente.";
+        TempData["Message"] = "Artículo publicado correctamente.";
         return RedirectToPage("/Blog/Index");
     }
 }

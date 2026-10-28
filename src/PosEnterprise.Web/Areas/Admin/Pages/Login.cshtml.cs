@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
@@ -11,6 +12,13 @@ namespace PosEnterprise.Web.Areas.Admin.Pages;
 
 public class LoginModel : PageModel
 {
+    private readonly IConfiguration _configuration;
+
+    public LoginModel(IConfiguration configuration)
+    {
+        _configuration = configuration;
+    }
+
     [BindProperty]
     public InputModel Input { get; set; } = new();
 
@@ -37,8 +45,14 @@ public class LoginModel : PageModel
             return Page();
         }
 
-        // Validación simple de credenciales administrativas
-        if (Input.Username == "admin" && Input.Password == "Admin123!")
+        var adminUser = _configuration["AdminSettings:Username"];
+        var adminPass = _configuration["AdminSettings:Password"];
+
+        // Comparación segura con configuración de entorno
+        if (!string.IsNullOrEmpty(adminUser) &&
+            !string.IsNullOrEmpty(adminPass) &&
+            Input.Username == adminUser &&
+            Input.Password == adminPass)
         {
             var claims = new List<Claim>
             {
@@ -55,7 +69,8 @@ public class LoginModel : PageModel
             return LocalRedirect(returnUrl);
         }
 
-        ErrorMessage = "Credenciales incorrectas.";
+        // Mensaje genérico de autenticación sin revelar si el error fue de usuario o clave
+        ErrorMessage = "Usuario o contraseña no válidos.";
         return Page();
     }
 }

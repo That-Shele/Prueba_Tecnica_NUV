@@ -14,7 +14,4 @@
 	<ItemGroup>
 		<ProjectReference Include="..\PosEnterprise.Core\PosEnterprise.Core.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Services\" />
-	</ItemGroup>
 </Project>

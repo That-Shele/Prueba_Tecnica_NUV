@@ -1,7 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using PosEnterprise.Core.Entities;
 using PosEnterprise.Core.Interfaces;
+using PosEnterprise.Core.Specifications;
 using PosEnterprise.Infrastructure.Data;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PosEnterprise.Infrastructure.Repositories;
 
@@ -18,7 +22,7 @@ public class BlogRepository : IBlogRepository
     {
         return await _context.BlogPosts
             .AsNoTracking()
-            .Where(b => b.IsPublished)
+            .Where(PublishedPostSpec.IsPublishedAndReady())
             .OrderByDescending(b => b.PublishedAt)
             .ToListAsync();
     }

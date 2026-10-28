@@ -21,7 +21,10 @@ public class DeleteModel : PageModel
     public async Task<IActionResult> OnGetAsync(int id)
     {
         var post = await _blogRepository.GetByIdAsync(id);
-        if (post == null) return NotFound();
+        if (post == null)
+        {
+            return NotFound();
+        }
 
         Article = post;
         return Page();
@@ -30,7 +33,7 @@ public class DeleteModel : PageModel
     public async Task<IActionResult> OnPostAsync(int id)
     {
         await _blogRepository.DeleteAsync(id);
-        TempData["Message"] = "Artículo eliminado de la base de datos.";
+        TempData["Message"] = "El artículo ha sido eliminado permanentemente.";
         return RedirectToPage("/Blog/Index");
     }
 }

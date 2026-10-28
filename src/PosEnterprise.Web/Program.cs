@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using PosEnterprise.Core.Interfaces;
 using PosEnterprise.Infrastructure.Data;
 using PosEnterprise.Infrastructure.Repositories;
+using PosEnterprise.Infrastructure.Services;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Inyección de dependencias de Repositorios
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 builder.Services.AddScoped<IContactRepository, ContactRepository>();
+builder.Services.AddScoped<ISitemapService, SitemapService>();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
